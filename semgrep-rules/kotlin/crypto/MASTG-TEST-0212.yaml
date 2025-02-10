@@ -1,0 +1,16 @@
+rules:
+  - id: MASTG-TEST-0212
+    severity: WARNING
+    languages:
+      - kotlin
+    metadata:
+      summary: This rule looks for hardcoded keys in use.
+    message: "[MASVS-CRYPTO-1] Hardcoded cryptographic keys found in use."
+    pattern-either:
+      - pattern: val $SECRET = SecretKeySpec($KEY, $ALGO)
+      - pattern: |
+          val $KEY = byteArrayOf(...)
+          ...
+          val $SECRET = SecretKeySpec($KEY, $ALGO)
+          ...
+          $CIPHER.init($MODE, $SECRET)

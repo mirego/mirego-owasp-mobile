@@ -1,0 +1,16 @@
+rules:
+    - id: MASTG-TEST-0239
+      languages:
+        - swift
+      severity: WARNING
+      metadata:
+        summary: This test checks for direct usage of the Socket API. Can lead to clear text traffic if not used properly
+      message: "Direct usage of the low level networking API, validate that all communications are encrypted and that the proper security controls are in place"
+      pattern-either: 
+        - pattern: getaddrinfo(...)
+        - pattern: socket(...)
+        - pattern: connect(...)
+        - pattern: CFHTTPMessageCreateRequest(...)
+        - pattern: CFReadStreamCreateForHTTPRequest(...)
+        - pattern: CFReadStreamHasBytesAvailable(...)
+        - pattern: NWConnection(...)

@@ -1,0 +1,16 @@
+rules:
+  - id: MASTG-TEST-0211
+    severity: WARNING
+    languages:
+      - swift
+    metadata:
+      summary: Weak Hashing Algorithms.
+    message: Found instance of weak hashing algorithms.
+    pattern-either:
+      - pattern: CC_MD2 
+      - pattern: CC_MD4
+      - pattern: CC_MD5
+      - pattern: CC_SHA1
+      - pattern: CC_SHA224
+      - pattern: Insecure.MD5
+      - pattern: Insecure.SHA1

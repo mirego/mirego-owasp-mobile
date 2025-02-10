@@ -1,0 +1,21 @@
+rules:
+  - id: MASTG-TEST-0233-config
+    languages:
+      - xml
+    severity: WARNING
+    metadata:
+      summary: This rule looks for hardcoded http:// urls in xml configs.
+    message: "Hardcoded http:// url found in xml configs"
+    patterns:
+      - pattern-not-regex: xmlns:android="http://*
+      - pattern-not-regex: xmlns:tools="http://*
+      - pattern-not-regex: xmlns:app="http://*
+      - pattern-not-regex: xmlns:aapt="http://*
+      - pattern-not-regex: http://www.apple.com/DTDs/PropertyList-1.0.dtd
+      - pattern-not-regex: http://www.apache.org/licenses/LICENSE-2.0
+      - pattern-either:
+        - pattern-regex: http://
+        - pattern-regex: HTTP://
+
+        
+    

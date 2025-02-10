@@ -1,0 +1,18 @@
+rules:
+  - id: MASTG-TEST-0214
+    severity: WARNING
+    languages:
+      - xml
+      - swift
+      - json
+    metadata:
+      summary: Hardcoded Cryptographic Keys in Files.
+    message: Found instance of hardcoded cryptographic keys in config files.
+    pattern-either:
+      - pattern-regex: -----BEGIN PRIVATE KEY----- 
+      - pattern-regex: -----BEGIN CERTIFICATE-----
+      - pattern-regex: 0x2d0x2d0x2d0x2d0x2d
+      - pattern-regex: 0x300x82
+      - pattern-regex: privateKey
+      - pattern-regex: secret
+      

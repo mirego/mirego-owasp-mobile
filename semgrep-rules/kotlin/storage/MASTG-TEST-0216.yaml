@@ -1,0 +1,11 @@
+rules:
+  - id: MASTG-TEST-0216
+    languages:
+      - xml
+    severity: WARNING
+    metadata:
+        summary: This rule check that Sensitive Data is excluded from backups.
+    message: "Found external storage permissions"
+    pattern-either:
+      - pattern-regex: fullBackupContent
+      - pattern-regex: dataExtractionRules

@@ -1,0 +1,25 @@
+rules:
+  - id: MASTG-TEST-0202-code
+    languages:
+      - kotlin
+    severity: WARNING
+    metadata:
+      summary: This rule validates that no external storage APIs are used in code.
+    message: "Found external storage API usage"
+    pattern-either:
+      - pattern: getExternalStoragePublicDirectory(...)
+      - pattern: getExternalStorageDirectory(...)
+      - pattern: getExternalFilesDir(...)
+      - pattern: MediaStore
+      - pattern: WRITE_EXTERNAL_STORAGE
+      - pattern: MANAGE_EXTERNAL_STORAGE
+  - id: MASTG-TEST-0202-xml
+    languages:
+      - xml
+    severity: WARNING
+    metadata:
+      summary: This rule validates that no external storage permissions are used.
+    message: "Found external storage permissions"
+    pattern-either:
+      - pattern-regex: WRITE_EXTERNAL_STORAGE
+      - pattern-regex: MANAGE_EXTERNAL_STORAGE

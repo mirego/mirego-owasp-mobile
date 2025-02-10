@@ -1,0 +1,12 @@
+rules:
+  - id: MASTG-TEST-0204
+    severity: WARNING
+    languages:
+      - kotlin
+    metadata:
+      summary: This rule looks for common patterns including classes and methods.
+      original_source: https://github.com/mindedsecurity/semgrep-rules-android-security/blob/main/rules/crypto/mstg-crypto-6.yaml
+    message: "MASTG-TEST-0204: Insecure Random API Usage \n Android apps sometimes use an insecure pseudorandom number generator (PRNG), such as java.util.Random ↗, which is a linear congruential generator and produces a predictable sequence for any given seed value. As a result, java.util.Random and Math.random() (the latter ↗ simply calls nextDouble() on a static java.util.Random instance) generate reproducible sequences across all Java implementations whenever the same seed is used. This predictability makes them unsuitable for cryptographic or other security-sensitive contexts."
+    patterns:
+    - pattern-either:
+      - pattern: Random.$METHOD(...)

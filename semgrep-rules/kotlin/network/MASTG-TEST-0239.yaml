@@ -1,0 +1,10 @@
+  rules:
+    - id: MASTG-TEST-0239
+      languages:
+        - kotlin
+      severity: WARNING
+      metadata:
+        summary: This test checks for direct usage of the Socket API. Can lead to clear text traffic if not used properly
+      message: "Direct usage of the Socket API, validate that all communications are encrypted"
+      pattern: val $SOCKET = Socket(...)
+      

@@ -1,0 +1,11 @@
+rules:
+  - id: MASTG-TEST-0227
+    languages:
+      - kotlin
+    severity: WARNING
+    metadata:
+      summary: This rule validates that webviews are not debuggable.
+    message: "Found hints of wbeviews being debuggable"
+    pattern-either:
+      - pattern: $OBJECT.setWebContentsDebuggingEnabled(...)
+      - pattern: ApplicationInfo.FLAG_DEBUGGABLE

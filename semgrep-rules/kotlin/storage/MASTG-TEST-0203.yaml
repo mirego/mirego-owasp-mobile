@@ -1,0 +1,33 @@
+rules:
+  - id: MASTG-TEST-0203-logging-api
+    languages:
+      - kotlin
+    severity: WARNING
+    metadata:
+      summary: This rules look for usage of loggers.
+    message: "Found logger usage"
+    pattern-either:
+      - pattern: Log.$METHOD(...)
+      - pattern: Logger.$METHOD(...)
+      - pattern: print(...)
+      - pattern: println(...)
+      - pattern: System.out.$METHOD(...)
+      - pattern: System.err.$METHOD(...)
+      - pattern: printStackTrace(...)
+  - id: MA-TEST-0203-http-logger-verbose
+    languages:
+      - kotlin
+    severity: WARNING
+    metadata:
+      summary: This rules look for usage of http loggers.
+    message: "Found http logger usage"
+    patterns:
+      - pattern-inside: install(Logging){ ... }
+      - pattern-either:
+        - pattern: logger = AndroidHttpLogger()
+        - pattern-either:
+          - pattern: level = LogLevel.ALL
+          - pattern: level = LogLevel.HEADERS
+          - pattern: level = LogLevel.BODY
+          - pattern: level = LogLevel.INFO
+    

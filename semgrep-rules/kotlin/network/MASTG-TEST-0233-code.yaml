@@ -1,0 +1,12 @@
+rules:
+  - id: MASTG-TEST-0233-code
+    languages:
+      - kotlin
+    severity: WARNING
+    metadata:
+      summary: This rule looks for hardcoded http:// urls in code.
+    message: "Hardcoded http:// url found in code"
+    pattern-either:
+      - pattern-regex: http://
+      - pattern-regex: HTTP://
+    

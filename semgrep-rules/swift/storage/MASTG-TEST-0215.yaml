@@ -1,0 +1,11 @@
+rules:
+  - id: MASTG-TEST-0215
+    severity: WARNING
+    languages:
+      - swift
+    metadata:
+      summary: Sensitive Data Not Excluded From Backup.
+    message: isExcludedFromBackup is used, verify that the data is not sensitive or that it is encrypted.
+    pattern-either:
+      - pattern-regex: isExcludedFromBackup
+      

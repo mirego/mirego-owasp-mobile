@@ -1,0 +1,17 @@
+rules:
+  - id: MASTG-TEST-0234
+    languages:
+      - kotlin
+    severity: WARNING
+    metadata:
+      summary: SSLSockets not Properly Verifying Hostnames. Since these api are not normally used, we simply look for the creation of the SSLSocketFactory and the setting of the HostnameVerifier.
+    message: "Usage of SSLSocketFactory.getDefault() and HostnameVerifier found, validation needed"
+    pattern-either:
+      - pattern: |
+          val $FACT = SSLSocketFactory.getDefault(...)
+          ...
+          $FACT.createSocket(...)
+      - pattern: |
+          val $VERIF = HostnameVerifier { ... }
+          ...
+          $SOCKET.hostnameVerifier = $VERIF

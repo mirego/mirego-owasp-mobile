@@ -1,0 +1,17 @@
+rules:
+  - id: MASTG-TEST-0209
+    severity: WARNING
+    languages:
+      - swift
+    metadata:
+      summary: Innapropriate key sizes.
+    message: Found instance of innapropriate keys size (too small).
+    pattern-either:
+      - pattern: CCrypt(...)
+      - pattern: CCCryptorCreate(...)
+      - pattern: CCCryptorCreateFromData(...)
+      - pattern: CCCryptorUpdate(...)
+      - pattern: SecKeyCreateRandomKey(...)
+      - pattern: SecKeyGeneratePair(...)
+      - pattern: AES.GCM
+      - pattern: ChaChaPoly

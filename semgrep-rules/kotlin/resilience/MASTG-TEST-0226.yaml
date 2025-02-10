@@ -1,0 +1,12 @@
+rules:
+  - id: MASTG-TEST-0226
+    languages:
+      - xml
+      - kotlin
+    severity: WARNING
+    metadata:
+      summary: This rules look for debuggable flags in the application configuration.
+    message: "Debuggable flag is active"
+    pattern-either:
+      - pattern-regex: android:debuggable
+      - pattern-regex: application-debuggable

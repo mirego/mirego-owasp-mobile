@@ -1,0 +1,23 @@
+rules:
+  - id: MASTG-TEST-0205
+    severity: WARNING
+    languages:
+      - swift
+    metadata:
+      authors:
+        - Riccardo Cardelli @gand3lf (IMQ Minded Security)
+      owasp-mobile: M5
+      category: security
+      area: cryptography
+      verification-level:
+        - L1
+        - L2
+      references:
+        - https://github.com/OWASP/owasp-mastg/blob/v1.5.0/Document/0x05e-Testing-Cryptography.md#testing-random-number-generation-mstg-crypto-6
+    message: The application makes use of insecure random number generator.
+    pattern-either:
+        - patterns:
+            - pattern-inside: $M(...){ ... }
+            - pattern-either:
+                - pattern: $D = Date()
+                - pattern: LocalDate.now()

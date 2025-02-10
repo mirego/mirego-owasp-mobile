@@ -1,0 +1,12 @@
+rules:
+  - id: MASTG-TEST-0066
+    severity: WARNING
+    languages:
+      - xml
+    metadata:
+      summary: Check to make sure App Transport Security is not bypassed.
+    message: Custom NSAppTransportSecurity settings found, possible bypass of App Transport Security.
+    pattern-either:
+      - pattern-regex: NSAppTransportSecurity
+
+ 

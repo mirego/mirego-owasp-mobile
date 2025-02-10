@@ -1,0 +1,13 @@
+rules:
+  - id: MASTG-TEST-0213
+    severity: WARNING
+    languages:
+      - swift
+    metadata:
+      summary: Use of Hardcoded Cryptographic Keys in Code.
+    message: Found instance of hardcoded cryptographic keys in code.
+    pattern-either:
+      - pattern: SecKeyCreateWithData(...) 
+      - pattern: CCCrypt
+      - pattern: P256.Signing.PrivateKey.init(...)
+      

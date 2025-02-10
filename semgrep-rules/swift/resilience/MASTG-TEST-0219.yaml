@@ -1,0 +1,14 @@
+rules:
+  - id: MASTG-TEST-0219
+    severity: WARNING
+    languages:
+      - none
+    metadata:
+      summary: Testing for Debugging Symbols.
+    paths:
+      include:
+        - "*.pbxproj"
+    message: App is built with debugging symbols enabled, make sure the release config uses dwarf-with-dsym
+    pattern-either:
+      - pattern-regex: DEBUG_INFORMATION_FORMAT
+      

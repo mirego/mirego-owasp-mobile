@@ -1,0 +1,14 @@
+rules:
+  - id: MASTG-TEST-0217
+    languages:
+      - kotlin
+    severity: WARNING
+    metadata:
+      summary: This rules looks for insecure usage of old TLS protocols mode.
+    message: "Insecure TLS Protocols Explicitly Allowed in Code"
+    pattern-either:
+      - pattern: SSLContext.getInstance(...)
+      - pattern: setEnabledProtocols(...)
+      - pattern: connectionSpecs(...)
+      - pattern: tlsVersions(...)
+      - pattern: COMPATIBLE_TLS

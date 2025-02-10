@@ -1,0 +1,19 @@
+rules:
+  - id: MASTG-TEST-0210
+    severity: WARNING
+    languages:
+      - swift
+    metadata:
+      summary: Weak Encryption Algorithms
+    message: Found usage of weak encryption algorithms.
+    pattern-either:
+      - pattern: AES.GCM
+      - pattern: ChaChaPoly
+      - pattern: kCCAlgorithmAES128
+      - pattern: kCCAlgorithmDES
+      - pattern: kCCAlgorithm3DES
+      - pattern: kCCAlgorithmCAST
+      - pattern: kCCAlgorithmRC4
+      - pattern: kCCAlgorithmRC2
+      
+

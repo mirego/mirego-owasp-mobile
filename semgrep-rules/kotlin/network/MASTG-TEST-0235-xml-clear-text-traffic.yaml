@@ -1,0 +1,12 @@
+rules:
+  - id: MASTG-TEST-0235
+    languages:
+      - xml
+    severity: WARNING
+    metadata:
+      summary: This rule looks for usesCleartextTraffic="true" and permissive network_security_config
+    message: "Clear text traffic allowed from some configuration, validation needed"
+    pattern-either:
+      - pattern: usesCleartextTraffic="true"
+      - pattern: cleartextTrafficPermitted="true"
+    
