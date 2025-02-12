@@ -1,0 +1,18 @@
+rules:
+  - id: MASTG-TEST-0231-logging-api-references
+    languages:
+      - swift
+    severity: WARNING
+    metadata:
+      summary: This rules look for usage of loggers.
+    message: "Found logger usage"
+    pattern-either:
+      - pattern: OSLog
+      - pattern: NSLog(...)
+      - pattern: Logger(...)
+      - pattern: $OBJECT.log(...)
+      - pattern: print(...)
+      - pattern: CocoaLumberjack
+      - pattern: SwiftyBeaver
+      - pattern: XCGLogger
+    
